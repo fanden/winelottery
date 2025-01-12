@@ -1,4 +1,5 @@
 package com.ryvarden.winelottery.api.controller;
+import com.ryvarden.winelottery.api.model.DTO.UserCreateDTO;
 import com.ryvarden.winelottery.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public void createUser(@RequestBody String name, @RequestBody String phone){
-        userService.createUser(name, phone);
+    public void createUser(@RequestBody UserCreateDTO userCreateDTO){
+        userService.createUser(userCreateDTO.getName(), userCreateDTO.getPhone());
     }
 
 }

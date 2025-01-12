@@ -10,6 +10,6 @@ public interface ITicketService {
     Optional<List<Ticket>> getTicketsForUser(int lotteryId, int userId);
     Optional<List<Ticket>> getTicketsForLottery(int lotteryId);
     Optional<Ticket> getTicketForNumber(int lotteryId, int ticketNumber);
-    Optional<Integer> getAvailableTicketsForLottery(int lotteryId);
+    Optional<List<Ticket>> getAvailableTicketsForLottery(int lotteryId);
 
 }

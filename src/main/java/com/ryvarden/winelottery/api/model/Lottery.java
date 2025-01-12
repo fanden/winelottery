@@ -89,4 +89,8 @@ public class Lottery {
         this.status = status;
     }
 
+    public List<Ticket> getTicketList(){
+        return this.ticketList;
+    }
+
 }
