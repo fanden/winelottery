@@ -27,10 +27,8 @@ public class TicketService implements ITicketService {
 
     @Override
     public void purchaseTicket(int lotteryId, int userId, List<Integer> ticketNumbersToPurchase) {
-        // userId and tickerNumber needs to be 1 or above
-        Lottery lottery = lotteryService.getLotteryById(lotteryId)
-                .orElseThrow();
-        User user = userService.getUserById(lottery, userId);
+
+        User user = userService.getUserById(lotteryId, userId);
     }
 
     @Override

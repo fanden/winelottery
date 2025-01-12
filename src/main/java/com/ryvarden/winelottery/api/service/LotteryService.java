@@ -5,9 +5,7 @@ import com.ryvarden.winelottery.api.model.Wine;
 import com.ryvarden.winelottery.api.service.interfaces.ILotteryService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class LotteryService implements ILotteryService {
@@ -28,11 +26,9 @@ public class LotteryService implements ILotteryService {
 
     @Override
     public Optional<Lottery> getCurrentLottery() {
-        if (lotteryList.isEmpty()) {
-            return Optional.empty();
-        }
-        // The latest lottery should be the last one inserted
-        return Optional.of(lotteryList.getLast());
+        return lotteryList.stream()
+                .filter(lottery -> "ACTIVE".equals(lottery.getStatus()))
+                .max(Comparator.comparingInt(Lottery::getId));
     }
 
     @Override
@@ -42,23 +38,11 @@ public class LotteryService implements ILotteryService {
                 .findFirst();
     }
 
-    @Override
-    public Optional<List<Wine>> getWineList(int lotteryId) {
 
-        return lotteryList.stream()
-                .filter(lottery -> lottery.getId() == lotteryId)
-                .findFirst()
-                .map(Lottery::getWineList);
-    }
+    // TODO Get avalible tickets
 
-    @Override
-    public Optional<Lottery> addWine(int lotteryId, List<Wine> wineList) {
-        return lotteryList.stream()
-                .filter(lottery -> lottery.getId() == lotteryId)
-                .findFirst()
-                .map(lottery -> {
-                    lottery.addWine(wineList);
-                    return lottery;
-                });
-    }
+    // TODO Get unavalible tickets (purchased)
+
+    // TODO Get unavalible tickets (reserved)
+
 }

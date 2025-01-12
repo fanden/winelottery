@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/tickets")
 // Versioning is important for future compatability, in case changes are needed to the API
 public class TicketController {
-    // @PostMapping("/purchase")
-    // @GetMapping("/user/{lotteryId}/{userId}")
-    // @GetMapping("/lottery/{lotteryId}")
-    // @GetMapping("/number/{lotteryId}/{number}")
+    // TODO @PostMapping("/reserve/{lotteryId}/{userId}")
+    // TODO @PostMapping("/purchase")
+    // TODO @GetMapping("/user/{lotteryId}/{userId}")
+    // TODO @GetMapping("/lottery/{lotteryId}")
+    // TODO @GetMapping("/number/{lotteryId}/{number}")
+
+    // TODO Get avalible
+    // TODO Get reserved
+    // TODO Get purchased
 }

@@ -15,8 +15,8 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public void createUser(@RequestParam int id, @RequestParam String name){
-        userService.createUser(id, name);
+    public void createUser(@RequestBody String name, @RequestBody String phone){
+        userService.createUser(name, phone);
     }
 
 }

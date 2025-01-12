@@ -36,21 +36,6 @@ public class LotteryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/wines/{lotteryId}")
-    public ResponseEntity<?> getWineList(@PathVariable int lotteryId) {
-        Optional<List<Wine>> wineList = lotteryService.getWineList(lotteryId);
+    // TODO Move this to winecontroller
 
-        return wineList
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping("/wines/add/{lotteryId}")
-    public ResponseEntity<?> addWine(@PathVariable int lotteryId, @RequestBody List<Wine> wineList){
-        Optional<Lottery> lottery = lotteryService.addWine(lotteryId, wineList);
-
-        return lottery
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
 }

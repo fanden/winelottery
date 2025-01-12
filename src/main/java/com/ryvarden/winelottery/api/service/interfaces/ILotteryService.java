@@ -10,6 +10,4 @@ public interface ILotteryService {
     void createLottery();
     Optional<Lottery> getCurrentLottery();
     Optional<Lottery> getLotteryById(int lotteryId);
-    Optional<List<Wine>> getWineList(int lotteryId);
-    Optional<Lottery> addWine(int lotteryId, List<Wine> wineList);
 }

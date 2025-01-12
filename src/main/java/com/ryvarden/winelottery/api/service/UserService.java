@@ -16,14 +16,14 @@ public class UserService implements IUserService {
         this.userCount = 0;
     }
 
-    public void createUser(int id, String name) {
-        userList.add(new User(id, name));
+    public void createUser(String name, String phone) {
+        userList.add(new User(userCount, name, phone));
         userCount++;
     }
 
     // TODO Implement method
     @Override
-    public User getUserById(Lottery lottery, int userId) {
+    public User getUserById(int lotteryId, int userId) {
         return null;
     }
 }

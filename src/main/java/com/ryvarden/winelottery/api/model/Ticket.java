@@ -6,9 +6,8 @@ public class Ticket {
     private String status;
     private int userId;
 
-    public Ticket(int number, int lotteryId, int userId) {
-        this.userId = userId;
-        // Assuming you would want new tickets to be available on creation, could be changed to an enu,
+    public Ticket(int number, int lotteryId) {
+        this.userId = -1;
         this.status = "AVAILABLE";
         this.lotteryId = lotteryId;
         this.number = number;
