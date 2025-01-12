@@ -75,8 +75,27 @@ Oppretter en ny bruker med gitt navn og telefonnmmer
 JSON body:
 ```` json
 {
-    "name": "Johannes",
-    "phone": "+180808080"
+   "name":  "Johannes",
+   "phone":  "+180808080"
 }
 ````
 
+
+### Videre arbeid
+
+- Sette opp enhetstester av API endepunktene, f.eks Burp er jeg fan av
+- Sette opp enhetstester av kode, funksjoner, klasset etc. Junit er standard
+
+#### Implimentere brukergrensesnitt i slack
+- Deltakere ville benyttet seg av en slack bot for å registrere seg i lotteriet
+- Betaling gjennom vipps API på telefonnummer
+- Legg inn fuksjonalitet for å automatisk fjerne reserverte tickets hvis betalingen ikke går gjennom, med en timeout callback
+#### Implimentere egendefinert exceptionhåndtering
+- LotteryNotFoundException
+- InvalidTicketNumberException
+#### Bygge inn database
+- h2 for enklere applikasjon
+- postgres hvis applikasjonen skal ha funksjonalitet til logging av tidligere 
+
+### Implimentere ferdig løsningen
+Løsningen er ikke ferdig implimentert. Se TODO kommentarer i koden
