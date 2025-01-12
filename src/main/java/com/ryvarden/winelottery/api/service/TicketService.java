@@ -18,20 +18,40 @@ import java.util.stream.Collectors;
 public class TicketService implements ITicketService {
     private final ILotteryService lotteryService;
     private final IUserService userService;
-    private List<Ticket> ticketList;
 
     @Autowired
     public TicketService(ILotteryService lotteryService, IUserService userService) {
         this.lotteryService = lotteryService;
         this.userService = userService;
-        this.ticketList = new ArrayList<Ticket>();
+    }
+
+    @Override
+    public boolean reserveTicket(int lotteryId, int userId, List<Integer> ticketNumbersToReserve) {
+
+        if (lotteryId <= 0 || userId <= 0)
+        {return false;}
+
+        Optional<Lottery> lotteryOptional = lotteryService.getLotteryById(lotteryId);
+        Optional<User> userOptional = userService.getUserById(userId);
+
+        if(lotteryOptional.isEmpty() || userOptional.isEmpty())
+        {return false;}
+
+        Lottery lottery = lotteryOptional.get();
+        User user = userOptional.get();
+
+        if (!checkTicketListStatus(lottery, ticketNumbersToReserve))
+        {return false;}
+
+        updateTicketStatus(lottery, user, ticketNumbersToReserve, "RESERVED" );
+
+        return true;
     }
 
     // TODO Implement method
     @Override
-    public void purchaseTicket(int lotteryId, int userId, List<Integer> ticketNumbersToPurchase) {
-        User user = userService.getUserById(lotteryId, userId);
-
+    public boolean purchaseTicket(int lotteryId, int userId, List<Integer> ticketNumbersToPurchase) {
+        return true;
     }
 
     // TODO Implement method
@@ -62,4 +82,22 @@ public class TicketService implements ITicketService {
                         .collect(Collectors.toList())
                 );
     }
+
+    private void updateTicketStatus(Lottery lottery, User user,List<Integer> ticketNumbersToUpdate, String status){
+        ticketNumbersToUpdate.forEach(numberToReserve -> {
+            Ticket ticket = lottery.getTicketList().stream()
+                    .filter(tick -> tick.getNumber() == numberToReserve)
+                    .findFirst()
+                    .orElseThrow();
+            ticket.setStatus(status);
+            ticket.setUserId(user.getId());
+        });
+    }
+
+    private boolean checkTicketListStatus(Lottery lottery, List<Integer> ticketNumbersToCheck){
+        return ticketNumbersToCheck.stream()
+                .allMatch(number -> lottery.getTicketList().stream()
+                        .anyMatch(ticket -> ticket.getNumber() == number && "AVAILABLE".equals(ticket.getStatus())));
+    }
+
 }

@@ -8,18 +8,25 @@ Dette prosjektet er gjennomført som forarbeid til en fagsamtale hos Experis
 
 /create (GET)
  Oppretter et nytt lotteri
+
 **Eksempel**
+
  `/api/v1/lotteries/create`
 
 /current (GET)
 Returnerer nyeste aktive lotteri
+
 **Eksempel**
+
 `/api/v1/lotteries/current`
+
 ### Wines (/ap1/v1/wines)
 
 /add/{lotteryid} (POST)
 Legger til en liste viner til et lotteri
+
 **Eksempel**
+
 `/api/v1/wines/add/0`
 
 JSON body:
@@ -62,22 +69,56 @@ JSON body:
 
 /{lotteryid} (GET)
 Returnerer vinlisten for et vilkårelig lotteri
+
 **Eksempel**
+
 `/api/v1/wines/0`
 
 ### User (/api/v1/users)
 
 /create (POST)
 Oppretter en ny bruker med gitt navn og telefonnmmer
+
 **Eksempel**
+
 `/api/v1/users/create`
 
-JSON body:
+JSON request body:
 ```` json
 {
    "name":  "Johannes",
    "phone":  "+180808080"
 }
+````
+
+/{userId}
+
+Returnerer brukeren for en gitt bruker ID
+
+**Eksempel**
+
+`/api/v1/users/0`
+
+### Tickets (/api/v1/tickets)
+
+/reserve/{lotteryid}/{userid} (POST)
+
+Reserverer billetter for gitt lotteri og bruker. Hvilke billetter du vil reservere sendes i request body.
+Du kan kun reservere billetter som er tilgengelige (dvs. ikke har status som reservert eller kjøpt fra før).
+
+**Eksempel**
+
+`/api/v1/tickets/reserve/0/0`
+
+JSON request body:
+
+````json
+[
+ 1,
+ 2,
+ 6,
+ 22
+]
 ````
 
 

@@ -1,6 +1,7 @@
 package com.ryvarden.winelottery.api.controller;
 import com.ryvarden.winelottery.api.model.Lottery;
 import com.ryvarden.winelottery.api.service.LotteryService;
+import com.ryvarden.winelottery.api.service.interfaces.ILotteryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +13,10 @@ import java.util.Optional;
 // Versioning is important for future compatability, in case changes are needed to the API
 public class LotteryController {
 
-    private final LotteryService lotteryService;
+    private final ILotteryService lotteryService;
 
     @Autowired
-    public LotteryController(LotteryService lotteryService){
+    public LotteryController(ILotteryService lotteryService){
         this.lotteryService = lotteryService;
     }
 

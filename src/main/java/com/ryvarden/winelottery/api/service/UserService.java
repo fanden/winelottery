@@ -4,7 +4,9 @@ import com.ryvarden.winelottery.api.model.User;
 import com.ryvarden.winelottery.api.service.interfaces.IUserService;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
@@ -21,9 +23,10 @@ public class UserService implements IUserService {
         userCount++;
     }
 
-    // TODO Implement method
     @Override
-    public User getUserById(int lotteryId, int userId) {
-        return null;
+    public Optional<User> getUserById(int userId) {
+        return userList.stream()
+                .filter(user -> user.getId() == userId)
+                .findFirst();
     }
 }
