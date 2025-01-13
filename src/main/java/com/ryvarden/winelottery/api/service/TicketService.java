@@ -28,7 +28,7 @@ public class TicketService implements ITicketService {
     @Override
     public boolean reserveTicket(int lotteryId, int userId, List<Integer> ticketNumbersToReserve) {
 
-        if (lotteryId <= 0 || userId <= 0)
+        if (lotteryId > 0 || userId > 0)
         {return false;}
 
         Optional<Lottery> lotteryOptional = lotteryService.getLotteryById(lotteryId);

@@ -31,40 +31,40 @@ Legger til en liste viner til et lotteri
 
 JSON body:
 ```json
-{
-  [
-    {
-      "id": 1,
-      "name": "Château Margaux 2015",
-      "price": 300,
-      "lotteryId": 0
-    },
-    {
-      "id": 2,
-      "name": "Opus One 2018",
-      "price": 250,
-      "lotteryId": 0
-    },
-    {
-      "id": 3,
-      "name": "Penfolds Grange 2017",
-      "price": 200,
-      "lotteryId": 0
-    },
-    {
-      "id": 4,
-      "name": "Sassicaia 2016",
-      "price": 150,
-      "lotteryId": 0
-    },
-    {
-      "id": 5,
-      "name": "Dom Pérignon 2010",
-      "price": 100,
-      "lotteryId": 0
-    }
-  ]
-}
+
+ [
+   {
+     "id": 1,
+     "name": "Château Margaux 2015",
+     "price": 300,
+     "lotteryId": 0
+   },
+   {
+     "id": 2,
+     "name": "Opus One 2018",
+     "price": 250,
+     "lotteryId": 0
+   },
+   {
+     "id": 3,
+     "name": "Penfolds Grange 2017",
+     "price": 200,
+     "lotteryId": 0
+   },
+   {
+     "id": 4,
+     "name": "Sassicaia 2016",
+     "price": 150,
+     "lotteryId": 0
+   },
+   {
+     "id": 5,
+     "name": "Dom Pérignon 2010",
+     "price": 100,
+     "lotteryId": 0
+   }
+ ]
+
 ```
 
 /{lotteryid} (GET)
